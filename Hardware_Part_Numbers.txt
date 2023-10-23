@@ -1,0 +1,8 @@
+IMU - BNO055 (UART/I2C) - https://jlcpcb.com/partdetail/BoschSensortec-BNO055/C93216
+GPS - MAX-M8 (UART/I2C) - https://www.u-blox.com/en/product/max-m8-series
+SD - TF-001B (SPI/SDMMC?/SPIO?) - https://jlcpcb.com/partdetail/Sofng-TF001B/C125617
+STM32F103C8T6 - https://jlcpcb.com/partdetail/Stmicroelectronics-STM32F103C8T6/C8734
+
+Reference
+https://github.com/pms67/BluePhil/tree/main
+https://www.youtube.com/watch?v=aVUqaB0IMh4
