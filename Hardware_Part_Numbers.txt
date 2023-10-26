@@ -1,7 +1,12 @@
 IMU - BNO055 (UART/I2C) - https://jlcpcb.com/partdetail/BoschSensortec-BNO055/C93216
-GPS - MAX-M8 (UART/I2C) - https://www.u-blox.com/en/product/max-m8-series
+GPS - MAX2769BETI (?) - https://jlcpcb.com/partdetail/119748-MAX2769BETI_VT/C118482 *NO ANTENNA*
+GPS - L80RE-M37 (?) - https://jlcpcb.com/partdetail/Quectel-L80REM37/C3029061
+GPS - ATGM336H-5N31 (?) - https://jlcpcb.com/partdetail/Zhongkewei-ATGM336H5N31/C90770 *NO KICAD MODEL*
 SD - TF-001B (SPI/SDMMC?/SPIO?) - https://jlcpcb.com/partdetail/Sofng-TF001B/C125617
+RF - NRF24L01P-R (SPI) - https://jlcpcb.com/partdetail/NordicSemicon-NRF24L01PR/C8791
 STM32F103C8T6 - https://jlcpcb.com/partdetail/Stmicroelectronics-STM32F103C8T6/C8734
+CRSTL - X322516MMB4SI - https://jlcpcb.com/partdetail/Yxc-X322516MMB4SI/C112972
+V REG - AMS1117-3.3 - https://jlcpcb.com/partdetail/323882-AMS1117_33/C347222
 
 Reference
 https://github.com/pms67/BluePhil/tree/main
