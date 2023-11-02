@@ -2,7 +2,7 @@ IMU - BNO055 (UART/I2C) - https://jlcpcb.com/partdetail/BoschSensortec-BNO055/C9
 GPS - MAX2769BETI (?) - https://jlcpcb.com/partdetail/119748-MAX2769BETI_VT/C118482 *NO ANTENNA*
 GPS - L80RE-M37 (?) - https://jlcpcb.com/partdetail/Quectel-L80REM37/C3029061
 GPS - ATGM336H-5N31 (?) - https://jlcpcb.com/partdetail/Zhongkewei-ATGM336H5N31/C90770 *NO KICAD MODEL*
-SD - TF-001B (SPI/SDMMC?/SPIO?) - https://jlcpcb.com/partdetail/Sofng-TF001B/C125617
+SD SOCKET - DS1139-06-08SS4BSR (SPI/SDMMC?/SPIO?) - https://jlcpcb.com/partdetail/ConnflyElec-DS1139_0608SS4BSR/C86574
 RF - NRF24L01P-R (SPI) - https://jlcpcb.com/partdetail/NordicSemicon-NRF24L01PR/C8791
 STM32F103C8T6 - https://jlcpcb.com/partdetail/Stmicroelectronics-STM32F103C8T6/C8734
 CRSTL - X322516MMB4SI - https://jlcpcb.com/partdetail/Yxc-X322516MMB4SI/C112972
