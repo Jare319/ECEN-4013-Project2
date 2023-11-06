@@ -7,6 +7,7 @@ RF - NRF24L01P-R (SPI) - https://jlcpcb.com/partdetail/NordicSemicon-NRF24L01PR/
 STM32F103C8T6 - https://jlcpcb.com/partdetail/Stmicroelectronics-STM32F103C8T6/C8734
 CRSTL - X322516MMB4SI - https://jlcpcb.com/partdetail/Yxc-X322516MMB4SI/C112972
 V REG - AMS1117-3.3 - https://jlcpcb.com/partdetail/323882-AMS1117_33/C347222
+BOOT SW - SSSS811101 
 
 Reference
 https://github.com/pms67/BluePhil/tree/main
