@@ -1,6 +1,4 @@
 Info for the Pi Zero
 hostname: raspigr11
 user: jare
-pass: 1qaz2wsx3edc4rfv
-
-Wifi connection setup under my user
+pass: 031902
