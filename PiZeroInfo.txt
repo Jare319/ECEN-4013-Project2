@@ -1,6 +1,6 @@
 Info for the Pi Zero
 hostname: raspigr11
 user: jare
-pass: 1qaz2wsx3edc4rfv
+pass: 031902
 
-Wifi connection setup under my user
+Bluetooth Serial Resource: https://www.electronicwings.com/raspberry-pi/raspberry-pi-uart-communication-using-python-and-c
