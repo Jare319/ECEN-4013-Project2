@@ -1,3 +1,4 @@
+STM32 BOARD PARTS:
 IMU - BNO055 (UART/I2C) - https://jlcpcb.com/partdetail/BoschSensortec-BNO055/C93216
 GPS - MAX2769BETI (?) - https://jlcpcb.com/partdetail/119748-MAX2769BETI_VT/C118482 *NO ANTENNA*
 GPS - L80RE-M37 (?) - https://jlcpcb.com/partdetail/Quectel-L80REM37/C3029061
@@ -7,8 +8,16 @@ RF - NRF24L01P-R (SPI) - https://jlcpcb.com/partdetail/NordicSemicon-NRF24L01PR/
 STM32F103C8T6 - https://jlcpcb.com/partdetail/Stmicroelectronics-STM32F103C8T6/C8734
 CRSTL - X322516MMB4SI - https://jlcpcb.com/partdetail/Yxc-X322516MMB4SI/C112972
 V REG - AMS1117-3.3 - https://jlcpcb.com/partdetail/323882-AMS1117_33/C347222
-BOOT SW - SSSS811101 
+BOOT SW - SSSS811101
+USB CNTR - 920-A52A2021S10106
 
 Reference
 https://github.com/pms67/BluePhil/tree/main
 https://www.youtube.com/watch?v=aVUqaB0IMh4
+
+RASPBERRY PI PARTS:
+MCU - Raspberry Pi Zero 2 W
+IMU - BNO055 Breakout board (Adafruit)
+GPS - Mini-GPS PA1010D (Adafruit)
+RF - HC-05 Bluetooth Transceiver Breakout Board (DSD Tech)
+USB and SD connectors built in
