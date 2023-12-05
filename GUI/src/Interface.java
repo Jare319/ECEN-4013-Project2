@@ -5,17 +5,39 @@ import javax.swing.border.Border;
 
 public class Interface extends JFrame{
 
-    StartScreen startScreen = new StartScreen();
-    DataScreen dataScreen = new DataScreen();
+    StartScreen startScreen;
+    DataScreen dataScreen;
     
     Interface() {
-        this.setTitle("Temp");
+        this.startScreen = new StartScreen(this);
+        this.setTitle("ECEN 4013 - Data Monitor GUI");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
-        // f.setSize(new Dimension(600,800));
         this.add(startScreen);
         this.pack();
         this.setVisible(true);
     }
 
+    public StartScreen getStartScreen() {
+        return this.startScreen;
+    }
+
+    public void setStartScreen(StartScreen startScreen) {
+        this.startScreen = startScreen;
+    }
+
+    public DataScreen getDataScreen() {
+        return this.dataScreen;
+    }
+
+    public void setDataScreen(DataScreen dataScreen) {
+        this.dataScreen = dataScreen;
+    }
+
+    public void setDataScreen() {
+        this.dataScreen = new DataScreen(this);
+        this.removeAll();
+        this.add(dataScreen);
+        this.pack();
+    }
 }

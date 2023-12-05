@@ -1,8 +1,6 @@
 import java.awt.*;
 import java.util.Arrays;
-
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
@@ -12,14 +10,14 @@ public class StartScreen extends JPanel{
     
     private SerialPort[] allPorts;
     private SerialPort[] activePorts;
-    private String[] portNames = new String[10];
-    private int hgap = 10;
-    private int vgap = 10;
+    private int hgap ,vgap = 10;
     private JPanel comPanel, startPanel, comboBoxPanel, comButtonPanel, startButtonPanel, comButtonBottomPanel;
     private JComboBox<String> comSelector;
     private JButton startButton, detectPortsButton;
+    private Interface hostFrame;
 
-    StartScreen() {
+    StartScreen(Interface hostFrame) {
+        this.hostFrame = hostFrame;
         this.setPreferredSize(new Dimension(300,200));
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.setBorder(new EmptyBorder(vgap,hgap,vgap,hgap));
@@ -64,6 +62,7 @@ public class StartScreen extends JPanel{
         startButton.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createRaisedBevelBorder(),BorderFactory.createEmptyBorder(2,5,2,5)));
         startButtonPanel.add(startButton, BorderLayout.LINE_END);
         startPanel.add(startButtonPanel, BorderLayout.PAGE_END);
+        startButton.addActionListener(e -> this.hostFrame.setDataScreen());
 
         comPanel.add(comboBoxPanel);
         comPanel.add(comButtonPanel);
