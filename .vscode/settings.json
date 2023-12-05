@@ -1,0 +1,10 @@
+{
+    "java.project.sourcePaths": [
+        "GUI/src",
+        "GUI/lib"
+    ],
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "GUI/lib/jSerialComm-2.10.4.jar"
+    ]
+}
