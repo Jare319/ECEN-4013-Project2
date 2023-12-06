@@ -34,10 +34,12 @@ public class Interface extends JFrame{
         this.dataScreen = dataScreen;
     }
 
-    public void setDataScreen() {
-        this.dataScreen = new DataScreen(this);
-        this.removeAll();
-        this.add(dataScreen);
+    public void setDataScreen(String portName) {
+        this.dataScreen = new DataScreen(this, portName);
+        this.getContentPane().removeAll();
+        this.getContentPane().add(dataScreen);
         this.pack();
+        this.setVisible(true);
+        //this.dataScreen.readData();
     }
 }

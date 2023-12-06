@@ -10,7 +10,8 @@ public class StartScreen extends JPanel{
     
     private SerialPort[] allPorts;
     private SerialPort[] activePorts;
-    private int hgap ,vgap = 10;
+    private int hgap = 10;
+    private int vgap = 10;
     private JPanel comPanel, startPanel, comboBoxPanel, comButtonPanel, startButtonPanel, comButtonBottomPanel;
     private JComboBox<String> comSelector;
     private JButton startButton, detectPortsButton;
@@ -62,7 +63,7 @@ public class StartScreen extends JPanel{
         startButton.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createRaisedBevelBorder(),BorderFactory.createEmptyBorder(2,5,2,5)));
         startButtonPanel.add(startButton, BorderLayout.LINE_END);
         startPanel.add(startButtonPanel, BorderLayout.PAGE_END);
-        startButton.addActionListener(e -> this.hostFrame.setDataScreen());
+        startButton.addActionListener(e -> this.hostFrame.setDataScreen(comSelector.getSelectedItem().toString()));
 
         comPanel.add(comboBoxPanel);
         comPanel.add(comButtonPanel);
