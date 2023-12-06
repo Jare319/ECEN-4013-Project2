@@ -17,7 +17,7 @@ gps = adafruit_gps.GPS_GtopI2C(i2c, debug=False)  # Use I2C interface
 imu = adafruit_bno055.BNO055_I2C(i2c)
 
 usb_serial = serial.Serial('/dev/ttyUSB0', 115200)
-bt_serial = serial.Serial('/dev/tty0', 115200)
+bt_serial = serial.Serial('/dev/serial0', 115200)
 
 # Turn on the basic GGA and RMC info (what you typically want)
 gps.send_command(b"PMTK314,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0")
@@ -34,4 +34,6 @@ while True:
         last_print = current
         # All sensor data in transmission order.
         # 'Lat', 'Long', 'Alt', 'NumSats', 'AngVelX', 'AngVelY', 'AngVelZ', 'AccelX', 'AccelY', 'AccelZ', 'MagX', 'MagY', 'MagZ'
-        bt_serial.write(str(gps.latitude)+","+str(gps.longitude)+","+str(gps.altitude)+","+str(gps.satellites)+","+str(imu.acceleration)) #idk what the rest would be called and ill do it later
+        dataString = str(gps.latitude)+","+str(gps.longitude)+","+str(gps.altitude_m)+","+str(gps.satellites)
+        print(dataString)
+        bt_serial.write(dataString.encode()) #idk what the rest would be called and ill do it later

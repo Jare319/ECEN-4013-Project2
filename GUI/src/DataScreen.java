@@ -1,10 +1,12 @@
 import java.awt.*;
+import java.io.InputStream;
+
 import javax.swing.*;
 import javax.swing.border.*;
 import com.fazecast.jSerialComm.*;
 
-public class DataScreen extends JPanel{
-    
+public class DataScreen extends JPanel {
+
     private Interface hostFrame;
     private JPanel gpsPanel, gyroPanel, magPanel, accelPanel;
     private JPanel latPanel, longPanel, altPanel, satsPanel;
@@ -18,17 +20,18 @@ public class DataScreen extends JPanel{
     private SerialPort serialPort;
 
     // All sensor data in transmission order.
-    //'Lat', 'Long', 'Alt', 'NumSats', 'AngVelX', 'AngVelY', 'AngVelZ', 'AccelX', 'AccelY', 'AccelZ', 'MagX', 'MagY', 'MagZ'
+    // 'Lat', 'Long', 'Alt', 'NumSats', 'AngVelX', 'AngVelY', 'AngVelZ', 'AccelX',
+    // 'AccelY', 'AccelZ', 'MagX', 'MagY', 'MagZ'
 
     public DataScreen(Interface hostFrame, String portName) {
         this.hostFrame = hostFrame;
         this.setPreferredSize(new Dimension(500, 600));
-        this.setLayout(new GridLayout(2,2));
-        this.setBorder(new EmptyBorder(vgap,hgap,vgap,hgap));
+        this.setLayout(new GridLayout(2, 2));
+        this.setBorder(new EmptyBorder(vgap, hgap, vgap, hgap));
         dataFields = new JTextField[13];
 
         // ===============================================================================================================
-        
+
         // GPS PANEL SETUP
         gpsPanel = new JPanel();
         gpsPanel.setBorder(new TitledBorder("GPS Data:"));
@@ -47,7 +50,7 @@ public class DataScreen extends JPanel{
         // GPS SUBPANEL ADDITIONS
         for (int i = 0; i < 4; i++) {
             dataFields[i] = new JTextField("Placeholder");
-            dataFields[i].setPreferredSize(new Dimension(220,25));
+            dataFields[i].setPreferredSize(new Dimension(220, 25));
             dataFields[i].setBorder(BorderFactory.createLoweredBevelBorder());
             dataFields[i].setEditable(false);
         }
@@ -82,7 +85,7 @@ public class DataScreen extends JPanel{
         // GYRO SUBPANEL ADDITIONS
         for (int i = 4; i < 7; i++) {
             dataFields[i] = new JTextField("Placeholder");
-            dataFields[i].setPreferredSize(new Dimension(220,25));
+            dataFields[i].setPreferredSize(new Dimension(220, 25));
             dataFields[i].setBorder(BorderFactory.createLoweredBevelBorder());
             dataFields[i].setEditable(false);
         }
@@ -115,7 +118,7 @@ public class DataScreen extends JPanel{
         // ACCELEROMETER SUBPANEL ADDITIONS
         for (int i = 7; i < 10; i++) {
             dataFields[i] = new JTextField("Placeholder");
-            dataFields[i].setPreferredSize(new Dimension(220,25));
+            dataFields[i].setPreferredSize(new Dimension(220, 25));
             dataFields[i].setBorder(BorderFactory.createLoweredBevelBorder());
             dataFields[i].setEditable(false);
         }
@@ -148,7 +151,7 @@ public class DataScreen extends JPanel{
         // MAGNETOMETER SUBPANEL ADDITIONS
         for (int i = 10; i < 13; i++) {
             dataFields[i] = new JTextField("Placeholder");
-            dataFields[i].setPreferredSize(new Dimension(220,25));
+            dataFields[i].setPreferredSize(new Dimension(220, 25));
             dataFields[i].setBorder(BorderFactory.createLoweredBevelBorder());
             dataFields[i].setEditable(false);
         }
@@ -165,34 +168,31 @@ public class DataScreen extends JPanel{
         // ===============================================================================================================
         this.portName = portName;
         this.serialPort = SerialPort.getCommPort(portName);
+        serialPort.openPort();
     }
 
     public void readData() {
-        byte[] buffer = new byte[8];
+        byte[] readBuffer = new byte[serialPort.bytesAvailable()];
         String[] dataString = new String[13];
-        int bytesAvailable = 0;
-        bytesAvailable = this.serialPort.bytesAvailable();
-        while (bytesAvailable > 0) {
-            bytesAvailable = this.serialPort.bytesAvailable();
-            if ( bytesAvailable > 0){
-                int bytesRead = serialPort.readBytes(buffer, bytesAvailable);
-                dataString = new String(buffer).split(",");
-                // for (int i = 0; i < 13; i++) {
-                //     try {
-                //         dataFields[i].setText(dataString[i]);
-                //     } catch (Exception e) {
-                //         e.printStackTrace();
-                //     }
-                // }
-                System.out.println(dataString.length);
-            }
+        if (serialPort.bytesAvailable() > 0) {
+            int numRead = serialPort.readBytes(readBuffer, readBuffer.length);
+            updateDataFields(new String(readBuffer).split(","));
+            // System.out.print(new String(readBuffer));
+        }
+        
+    }
+
+    public void updateDataFields(String[] data) {
+        for (int i = 0; i < dataFields.length; i++) {
             try {
-                Thread.sleep(10000);
-            } catch (InterruptedException e) {
-                System.out.println("Timer Error.");
-                e.printStackTrace();
+                dataFields[i].setText(data[i]);
+            } catch (Exception e) {
+                System.out.println("ERROR: unsupported data format over serial line...");
             }
         }
     }
 
+    public SerialPort getSerialPort() {
+        return this.serialPort;
+    }
 }

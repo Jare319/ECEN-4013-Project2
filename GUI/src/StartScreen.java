@@ -70,7 +70,6 @@ public class StartScreen extends JPanel{
         
         this.add(comPanel);
         this.add(startPanel);
-        detectPorts();
     }
 
     public void detectPorts() {
