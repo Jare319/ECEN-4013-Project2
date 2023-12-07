@@ -1,5 +1,5 @@
 import java.awt.*;
-import java.io.InputStream;
+import java.awt.event.*;
 
 import javax.swing.*;
 import javax.swing.border.*;
@@ -29,12 +29,33 @@ public class DataScreen extends JPanel {
         this.setLayout(new GridLayout(2, 2));
         this.setBorder(new EmptyBorder(vgap, hgap, vgap, hgap));
         dataFields = new JTextField[13];
+        JMenuBar menuBar = new JMenuBar();
+        JMenu menu = new JMenu("Menu");
+        menuBar.add(menu);
+        JMenuItem item = new JMenuItem("Back");
+        item.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                hostFrame.screen = 0;
+                try {
+                    Thread.sleep(30);
+                } catch (InterruptedException e1) {
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
+                }
+                serialPort.closePort();
+                hostFrame.setStartScreen();
+            }
+        });
+        menu.add(item);
+        hostFrame.setJMenuBar(menuBar);
 
         // ===============================================================================================================
 
         // GPS PANEL SETUP
         gpsPanel = new JPanel();
         gpsPanel.setBorder(new TitledBorder("GPS Data:"));
+        ((javax.swing.border.TitledBorder) gpsPanel.getBorder()).setTitleFont(new Font("Arial",Font.BOLD,15));
         gpsPanel.setLayout(new GridLayout(4, 1, hgap, vgap));
 
         // GPS SUBPANEL SETUP
@@ -71,6 +92,7 @@ public class DataScreen extends JPanel {
         // GYRO PANEL SETUP
         gyroPanel = new JPanel();
         gyroPanel.setBorder(new TitledBorder("Gyroscope Data:"));
+        ((javax.swing.border.TitledBorder) gyroPanel.getBorder()).setTitleFont(new Font("Arial",Font.BOLD,15));
         gyroPanel.setLayout(new GridLayout(3, 1, hgap, vgap));
         this.add(gyroPanel);
 
@@ -104,6 +126,7 @@ public class DataScreen extends JPanel {
         // ACCELEROMETER PANEL SETUP
         accelPanel = new JPanel();
         accelPanel.setBorder(new TitledBorder("Accelerometer Data"));
+        ((javax.swing.border.TitledBorder) accelPanel.getBorder()).setTitleFont(new Font("Arial",Font.BOLD,15));
         accelPanel.setLayout(new GridLayout(3, 1, hgap, vgap));
         this.add(accelPanel);
 
@@ -137,6 +160,7 @@ public class DataScreen extends JPanel {
         // MAGNETOMETER PANEL SETUP
         magPanel = new JPanel();
         magPanel.setBorder(new TitledBorder("Magnetometer Data"));
+        ((javax.swing.border.TitledBorder) magPanel.getBorder()).setTitleFont(new Font("Arial",Font.BOLD,15));
         magPanel.setLayout(new GridLayout(3, 1, hgap, vgap));
         this.add(magPanel);
 

@@ -21,12 +21,12 @@ public class Interface extends JFrame {
                 exitProcedure();
             }
         });
+        
         this.setResizable(false);
         this.add(startScreen);
         this.pack();
         this.setVisible(true);
         this.screen = STARTSCREEN;
-        this.startScreen.detectPorts();
     }
 
     public StartScreen getStartScreen() {
@@ -52,6 +52,15 @@ public class Interface extends JFrame {
         this.pack();
         this.setVisible(true);
         this.screen = DATASCREEN;
+    }
+
+    public void setStartScreen() {
+        this.startScreen = new StartScreen(this);
+        this.getContentPane().removeAll();
+        this.getContentPane().add(startScreen);
+        this.pack();
+        this.setVisible(true);
+        this.screen = STARTSCREEN;
     }
 
     public void exitProcedure() {

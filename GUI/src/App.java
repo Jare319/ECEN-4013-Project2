@@ -7,8 +7,8 @@ public class App {
             System.out.println(i.screen);
             while (i.screen==1) {
                 System.out.print("\rAttempting Read...");
-                Thread.sleep(1000);
                 i.dataScreen.readData();
+                Thread.sleep(1000);
             }
         }
     }
