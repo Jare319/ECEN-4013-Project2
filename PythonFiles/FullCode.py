@@ -26,8 +26,9 @@ gps.send_command(b"PMTK314,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0")
 gps.send_command(b"PMTK220,1000")
 
 csv = open("Data.csv","a+")
+csv.seek(0)
 header = csv.readline()
-if header == '':
+if header == "":
     csv.write("Lat,Long,Alt,Sats,GyroX,GyroY,GyroZ,AccelX,AccelY,AccelZ,MagX,MagY,MagZ\n")
 
 # Main loop runs forever printing the location, etc. every second.
@@ -45,7 +46,7 @@ while True:
         dataString = "{},{},{},{},{:.3f},{:.3f},{:.3f},{:.3f},{:.3f},{:.3f},{:.3f},{:.3f},{:.3f}".format(gps.latitude,gps.longitude,gps.altitude_m,gps.satellites,imu.gyro[0],imu.gyro[1],imu.gyro[2],imu.acceleration[0],imu.acceleration[1],imu.acceleration[2],imu.magnetic[0],imu.magnetic[1],imu.magnetic[2])
         dataString = dataString.replace('('," ")
         dataString = dataString.replace(')'," ")
-        print(dataString)
+        #print(dataString)
         f = open("testdata", "w")
         csv.write(dataString+"\n")
         f.write(dataString)
